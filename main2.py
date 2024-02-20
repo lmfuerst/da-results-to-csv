@@ -60,6 +60,9 @@ if __name__ == "__main__":
             else:
                 dictionary["insecure"] = ""
 
+            if dictionary["insecure"] == "":
+                dictionary["error"] = 1
+
             with open(os.path.join(subdir, "smartbugs.json")) as f:
                 data = json.load(f)
                 fullname = data["filename"]
@@ -72,7 +75,7 @@ if __name__ == "__main__":
                     if "\\No\\" in fullname:
                         dictionary["ground_truth"] = 0
                     elif "\\NonVulnerable\\" in fullname:
-                        dictionary["ground_truth"] = 1  # TODO adapt as needed
+                        dictionary["ground_truth"] = 0  # TODO adapt as needed
                     elif "\\Vulnerable\\" in fullname:
                         dictionary["ground_truth"] = 1
                     elif "\\Possibly\\" in fullname:
@@ -88,7 +91,7 @@ if __name__ == "__main__":
                     bytecode_list.append(dictionary)
 
     # write to csv - all
-    fname = "results_csv_20022024_nvtrue_num"
+    fname = "results_csv_20022024_nvfalse_num2"
     with open(fname + ".csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
                                 fieldnames=["tool", "sol_version", "type", "name", "insecure", "error",

@@ -4,7 +4,7 @@ import numpy as np
 import csv
 import time
 
-basename = "results_csv_20022024_nvtrue_num"
+basename = "results_csv_20022024_nvfalse_num2"
 
 if __name__ == "__main__":
     time_milli = round(time.time() * 1000)
@@ -38,6 +38,7 @@ if __name__ == "__main__":
     count_tn = df["tn"].astype(int).sum()
     count_fn = df["fn"].astype(int).sum()
     count_error = df["error"].sum()
+
     count_total_wo_error = count_tp + count_tn + count_fp + count_fn
     count_total_w_error = count_total_wo_error + count_error
 
@@ -80,6 +81,13 @@ if __name__ == "__main__":
         count_tn = data["tn"].astype(int).sum()
         count_fn = data["fn"].astype(int).sum()
         count_error = data["error"].sum()
+
+        print(count_tp)
+        print(count_tn)
+        print(count_fp)
+        print(count_fn)
+        print(count_error)
+
         count_total_wo_error = count_tp + count_tn + count_fp + count_fn
         count_total_w_error = count_total_wo_error + count_error
 
