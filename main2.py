@@ -79,7 +79,13 @@ if __name__ == "__main__":
                     split2 = fullname.split("\\")
                     print(fullname)
                     dictionary["sol_version"] = split2[8]  # TODO adapt as needed
-                    dictionary["type"] = split2[10]
+                    dictionary["type"] = split2[7]
+                    dictionary["subtype"] = split2[10]
+                    if len(split2) > 12:
+                        dictionary["subtype"] = split2[10] + split2[11]
+                        if len(split2) > 13:
+                            dictionary["subtype"] = dictionary["subtype"] + split2[12]
+
                     if "\\No\\" in fullname:
                         dictionary["ground_truth"] = 0
                     elif "\\NonVulnerable\\" in fullname:
@@ -99,10 +105,10 @@ if __name__ == "__main__":
                     bytecode_list.append(dictionary)
 
     # write to csv - all
-    fname = "results_csv_20022024_nvfalse_num3"
+    fname = "results_csv_20022024_nvfalse_num5"
     with open(fname + ".csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
-                                fieldnames=["tool", "sol_version", "type", "name", "insecure", "error",
+                                fieldnames=["tool", "sol_version", "type", "subtype", "name", "insecure", "error",
                                             "ground_truth", "filename"])
         writer.writeheader()
         for data in dictionary_list:
@@ -110,7 +116,7 @@ if __name__ == "__main__":
 
     with open(fname + "_bytecode.csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
-                                fieldnames=["tool", "sol_version", "type", "name", "insecure", "error",
+                                fieldnames=["tool", "sol_version", "type", "subtype", "name", "insecure", "error",
                                             "ground_truth", "filename"])
         writer.writeheader()
         for data in bytecode_list:
@@ -118,7 +124,7 @@ if __name__ == "__main__":
 
     with open(fname + "_solidity.csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
-                                fieldnames=["tool", "sol_version", "type", "name", "insecure", "error",
+                                fieldnames=["tool", "sol_version", "type", "subtype", "name", "insecure", "error",
                                             "ground_truth", "filename"])
         writer.writeheader()
         for data in soldity_list:

@@ -4,7 +4,7 @@ import numpy as np
 import csv
 import time
 
-basename = "results_csv_20022024_nvfalse_num3_solidity_sailfishv456"
+basename = "results_csv_20022024_nvfalse_num5_bytecode_agg"
 
 if __name__ == "__main__":
     time_milli = round(time.time() * 1000)
