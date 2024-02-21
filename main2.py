@@ -7,7 +7,7 @@ import csv
 # Sailfish: DAO dependency detected
 
 
-rootdir = "./results_3"
+rootdir = "./results"
 
 if __name__ == "__main__":
     dictionary_list = []
