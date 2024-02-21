@@ -4,7 +4,7 @@ import numpy as np
 import csv
 import time
 
-basename = "results_csv_20022024_nvfalse_num3"
+basename = "results_csv_20022024_nvfalse_num3_solidity_sailfishv456"
 
 if __name__ == "__main__":
     time_milli = round(time.time() * 1000)
@@ -23,6 +23,7 @@ if __name__ == "__main__":
     df["tn"] = np.where((df["ground_truth"] == 0) & (df["insecure"] == 0), 1, 0)
     df["fn"] = np.where((df["ground_truth"] == 1) & (df["insecure"] == 0), 1, 0)
 
+    # ignore rows where error==1
     df["tp"] = np.where(df["error"] == 1, 0, df["tp"])
     df["fp"] = np.where(df["error"] == 1, 0, df["fp"])
     df["tn"] = np.where(df["error"] == 1, 0, df["tn"])
@@ -38,6 +39,7 @@ if __name__ == "__main__":
     count_tn = df["tn"].astype(int).sum()
     count_fn = df["fn"].astype(int).sum()
     count_error = df["error"].sum()
+    count_total = count_tp + count_tn + count_fp + count_fn + count_error
 
     count_total_wo_error = count_tp + count_tn + count_fp + count_fn
     count_total_w_error = count_total_wo_error + count_error
@@ -47,14 +49,15 @@ if __name__ == "__main__":
     precision = count_tp / (count_tp + count_fp)
     recall = count_tp / (count_tp + count_fn)
     specificity = count_tn / (count_tn + count_fn)
+    error_rate = count_error / count_total
 
     with open(basename + "_metrics.csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
-                                fieldnames=["time", "type", "accuracy_wo_error", "accuracy_w_error", "precision", "recall",
-                                            "specificity"])
+                                fieldnames=["time", "type", "Accuracy w/o error", "Accuracy w/ error", "Precision", "Recall",
+                                            "Specificity", "Error rate"])
         writer.writeheader()
-        writer.writerow({"time": cur_time, "type": "total", "accuracy_wo_error": accuracy_wo_error, "accuracy_w_error": accuracy_w_error,
-                         "precision": precision, "recall": recall, "specificity": specificity})
+        writer.writerow({"time": cur_time, "type": "total", "Accuracy w/o error": accuracy_wo_error, "Accuracy w/ error": accuracy_w_error,
+                         "Precision": precision, "Recall": recall, "Specificity": specificity, "Error rate": error_rate})
 
     for tool in tools:
         print(tool)
@@ -81,6 +84,7 @@ if __name__ == "__main__":
         count_tn = data["tn"].astype(int).sum()
         count_fn = data["fn"].astype(int).sum()
         count_error = data["error"].sum()
+        count_total = count_tp + count_tn + count_fp + count_fn + count_error
 
         print(count_tp)
         print(count_tn)
@@ -96,10 +100,11 @@ if __name__ == "__main__":
         precision = count_tp / (count_tp + count_fp)
         recall = count_tp / (count_tp + count_fn)
         specificity = count_tn / (count_tn + count_fn)
+        error_rate = count_error / count_total
 
         with open(basename + "_metrics.csv", 'a', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, delimiter=';',
-                                    fieldnames=["time", "type", "accuracy_wo_error", "accuracy_w_error", "precision", "recall",
-                                                "specificity"])
-            writer.writerow({"time": cur_time, "type": tool, "accuracy_wo_error": accuracy_wo_error, "accuracy_w_error": accuracy_w_error,
-                             "precision": precision, "recall": recall, "specificity": specificity})
+                                    fieldnames=["time", "type", "Accuracy w/o error", "Accuracy w/ error", "Precision", "Recall",
+                                                "Specificity", "Error rate"])
+            writer.writerow({"time": cur_time, "type": tool, "Accuracy w/o error": accuracy_wo_error, "Accuracy w/ error": accuracy_w_error,
+                             "Precision": precision, "Recall": recall, "Specificity": specificity, "Error rate": error_rate})
