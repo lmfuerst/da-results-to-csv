@@ -17,7 +17,6 @@ if __name__ == "__main__":
     for subdir, dirs, files in os.walk(rootdir):
         if any(file.endswith(".json") for file in os.listdir(subdir)):
             dictionary = {}
-            print(subdir)
             split = subdir.split("\\")
             dictionary["tool"] = split[1]
             dictionary["name"] = split[3]
@@ -97,6 +96,12 @@ if __name__ == "__main__":
                     else:
                         dictionary["ground_truth"] = ""
 
+            print(dictionary["tool"])
+            print(dictionary["sol_version"])
+            if "sailfish" in dictionary["tool"] and ("v7" in dictionary["sol_version"] or "v8" in dictionary["sol_version"]):
+                print("continue")
+                continue
+
             if "testdata" in dictionary["filename"]:
                 dictionary_list.append(dictionary)
                 if ".sol" in dictionary["filename"]:
@@ -105,7 +110,7 @@ if __name__ == "__main__":
                     bytecode_list.append(dictionary)
 
     # write to csv - all
-    fname = "results_csv_20022024_nvfalse_num5"
+    fname = "results_21022024"
     with open(fname + ".csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
                                 fieldnames=["tool", "sol_version", "type", "subtype", "name", "insecure", "error",
