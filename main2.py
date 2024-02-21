@@ -30,21 +30,27 @@ if __name__ == "__main__":
                         if "ethor" in dictionary["tool"]:
                             if ".hex insecure" in line:
                                 insecure = 1
+                                break
                             elif ".hex secure" in line:
                                 insecure = 0
+                                break
                         if "mythril" in dictionary["tool"]:
                             if '"swc-id": "107"' in line:
                                 insecure = 1
+                                break
                             else:
                                 insecure = 0
                         if "oyente" in dictionary["tool"]:
                             if "Re-Entrancy Vulnerability: 		 True" in line:
                                 insecure = 1
+                                break
                             elif "Re-Entrancy Vulnerability:" in line:
                                 insecure = 0
+                                break
                         if "sailfish" in dictionary["tool"]:
                             if "DAO dependency detected" in line:
                                 insecure = 1
+                                break
                             else:
                                 insecure = 0
 
@@ -52,8 +58,10 @@ if __name__ == "__main__":
                                 or "Exception in thread" in line \
                                 or "ERROR:" in line:
                             dictionary["error"] = 1
+                            break
                         if '"error": null' not in line and '"error":' in line:
                             dictionary["error"] = 1
+                            break
 
                     dictionary["insecure"] = insecure
 
@@ -70,8 +78,8 @@ if __name__ == "__main__":
                 if "testdata" in fullname:
                     split2 = fullname.split("\\")
                     print(fullname)
-                    dictionary["sol_version"] = split2[10]
-                    dictionary["type"] = split2[9]
+                    dictionary["sol_version"] = split2[8]  # TODO adapt as needed
+                    dictionary["type"] = split2[10]
                     if "\\No\\" in fullname:
                         dictionary["ground_truth"] = 0
                     elif "\\NonVulnerable\\" in fullname:
@@ -91,7 +99,7 @@ if __name__ == "__main__":
                     bytecode_list.append(dictionary)
 
     # write to csv - all
-    fname = "results_csv_20022024_nvfalse_num2"
+    fname = "results_csv_20022024_nvfalse_num3"
     with open(fname + ".csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
                                 fieldnames=["tool", "sol_version", "type", "name", "insecure", "error",
