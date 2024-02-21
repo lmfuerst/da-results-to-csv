@@ -12,7 +12,7 @@ rootdir = "./results"
 if __name__ == "__main__":
     dictionary_list = []
     bytecode_list = []
-    soldity_list = []
+    solidity_list = []
 
     for subdir, dirs, files in os.walk(rootdir):
         if any(file.endswith(".json") for file in os.listdir(subdir)):
@@ -100,7 +100,7 @@ if __name__ == "__main__":
             if "testdata" in dictionary["filename"]:
                 dictionary_list.append(dictionary)
                 if ".sol" in dictionary["filename"]:
-                    soldity_list.append(dictionary)
+                    solidity_list.append(dictionary)
                 elif ".hex" in dictionary["filename"]:
                     bytecode_list.append(dictionary)
 
@@ -127,5 +127,5 @@ if __name__ == "__main__":
                                 fieldnames=["tool", "sol_version", "type", "subtype", "name", "insecure", "error",
                                             "ground_truth", "filename"])
         writer.writeheader()
-        for data in soldity_list:
+        for data in solidity_list:
             writer.writerow(data)
