@@ -14,22 +14,22 @@ if __name__ == "__main__":
     # Precision = tp / (tp + fp)
     # Recall = tp / (tp + fn)
     # Specificity = tn / (tn + fn)
-    types = ["CreateBasedReentrancy", "CrossFunctionReentrancy", "DelegatedReentrancy", "SameFunctionReentrancy"]
+    versions = ["v4", "v5", "v6", "v7", "v8"]
     tools = ["ethor-2023", "mythril-0.23.15", "oyente", "sailfish"]
     print(len(df))
 
     df["error"] = np.where(df["insecure"] == "", 1, df["error"])
 
-    with open(basename + "_types_metrics.csv", 'a', newline='') as csvfile:
+    with open(basename + "_version_metrics.csv", 'a', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=';',
                                 fieldnames=["Time", "Type", "Tool", "Accuracy w/o error", "Accuracy w/ error",
                                             "Precision", "Recall",
                                             "Specificity", "Error rate", "TP", "FP", "TN", "FN", "Error", "Total"])
         writer.writeheader()
 
-    for r_type in types:
-        print(r_type)
-        data = df[df["type"] == r_type]
+    for version in versions:
+        print(version)
+        data = df[df["sol_version"] == version]
         print(len(data))
         data = data.copy()
 
@@ -70,11 +70,11 @@ if __name__ == "__main__":
         specificity = count_tn / (count_tn + count_fn)
         error_rate = count_error / count_total
 
-        with open(basename + "_types_metrics.csv", 'a', newline='') as csvfile:
+        with open(basename + "_version_metrics.csv", 'a', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, delimiter=';',
                                     fieldnames=["Time", "Type", "Tool", "Accuracy w/o error", "Accuracy w/ error", "Precision", "Recall",
                                                 "Specificity", "Error rate", "TP", "FP", "TN", "FN", "Error", "Total"])
-            writer.writerow({"Time": cur_time, "Type": r_type, "Tool": "-", "Accuracy w/o error": accuracy_wo_error, "Accuracy w/ error": accuracy_w_error,
+            writer.writerow({"Time": cur_time, "Type": version, "Tool": "-", "Accuracy w/o error": accuracy_wo_error, "Accuracy w/ error": accuracy_w_error,
                              "Precision": precision, "Recall": recall, "Specificity": specificity, "Error rate": error_rate,
                              "TP": count_tp, "FP": count_fp, "TN": count_tn, "FN": count_fn, "Error": count_error, "Total": count_total})
 
@@ -120,13 +120,13 @@ if __name__ == "__main__":
             specificity = count_tn / (count_tn + count_fn)
             error_rate = count_error / count_total
 
-            with open(basename + "_types_metrics.csv", 'a', newline='') as csvfile:
+            with open(basename + "_version_metrics.csv", 'a', newline='') as csvfile:
                 writer = csv.DictWriter(csvfile, delimiter=';',
                                         fieldnames=["Time", "Type", "Tool", "Accuracy w/o error", "Accuracy w/ error",
                                                     "Precision", "Recall",
                                                     "Specificity", "Error rate", "TP", "FP", "TN", "FN", "Error",
                                                     "Total"])
-                writer.writerow({"Time": cur_time, "Type": r_type, "Tool": tool, "Accuracy w/o error": accuracy_wo_error,
+                writer.writerow({"Time": cur_time, "Type": version, "Tool": tool, "Accuracy w/o error": accuracy_wo_error,
                                  "Accuracy w/ error": accuracy_w_error,
                                  "Precision": precision, "Recall": recall, "Specificity": specificity,
                                  "Error rate": error_rate,
