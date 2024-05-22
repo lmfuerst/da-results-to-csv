@@ -1,0 +1,3 @@
+00:51:45.311 [main] WARN  wien.secpriv.ethor.ContractLexer - Integer 41 does not correspond to opcode!
+00:51:45.311 [main] WARN  wien.secpriv.ethor.ContractLexer - Encountered an unknown bytecode, skipping the subsequent after the byte...1172
+/sb/Bank.hex insecure

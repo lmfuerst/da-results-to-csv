@@ -1,0 +1,68 @@
+[INFO] | 2024-03-12 12:40:15 AM | analyzer.PossiblySendUserDefinedAddress | Analysis started at: 2024-03-12 12:40:15 AM
+[INFO] | 2024-03-12 12:40:15 AM | analyzer.PossiblySendUserDefinedAddress | Found version: 0.5.17
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Callgraph generation started!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Callgraph generation finished!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Interprocedural CFG generation started!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Interprocedural CFG generation finished!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Storage dependency graph generation started!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Storage dependency graph generation finished!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Value Range Analysis started
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Generating return summary for registerIntermediary
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Return summary generated for registerIntermediary
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | State variable assignement do not exist
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Processed function registerIntermediary
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Generating return summary for constructor
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Return summary generated for constructor
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Range graph generated
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Processed function constructor
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Generating return summary for getBalance
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Return summary generated for getBalance
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | State variable assignement do not exist
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Processed function getBalance
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Generating return summary for withdraw
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Return summary generated for withdraw
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Range graph generated
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Processed function withdraw
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Generating return summary for deposit
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Return summary generated for deposit
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Range graph generated
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Processed function deposit
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Value Range Analysis took 0.002330 seconds
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Value Range Analysis finished
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Storage dependency graph composition started!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Storage dependency graph composition finished!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Dependency detection started!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | DAO dependency possibly detected in file PossiblySendUserDefinedAddress.sol in contract Bank in by composing functions withdraw and withdraw
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Dependency detection finished!
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Static Analysis took 1.736345 seconds
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Dependency exists
+[INFO] | 2024-03-12 12:40:16 AM | analyzer.PossiblySendUserDefinedAddress | Invoking symbolic executor!
+[INFO] | 2024-03-12 12:40:17 AM | analyzer.PossiblySendUserDefinedAddress | DAO dependency detected by composing functions withdraw and withdraw
+[INFO] | 2024-03-12 12:40:17 AM | analyzer.PossiblySendUserDefinedAddress | Symbolic execution took 1.064584 seconds
+[INFO] | 2024-03-12 12:40:17 AM | analyzer.PossiblySendUserDefinedAddress | Symbolic execution finished!
+[INFO] | 2024-03-12 12:40:17 AM | analyzer.PossiblySendUserDefinedAddress | Analysis finished!
+[INFO] | 2024-03-12 12:40:17 AM | analyzer.PossiblySendUserDefinedAddress | Analysis took 2.801358 seconds
+[INFO] | 2024-03-12 12:40:17 AM | analyzer.PossiblySendUserDefinedAddress | Analysis finished at: 2024-03-12 12:40:17 AM
+[36m[#] Analysing started: PossiblySendUserDefinedAddress.sol[0m
+[36m[#] Interprocedural CFG generation started for registerIntermediary[0m
+[36m[#] Interprocedural CFG generated for registerIntermediary[0m
+[36m[#] Interprocedural CFG generation started for constructor[0m
+[36m[#] Interprocedural CFG generated for constructor[0m
+[36m[#] Interprocedural CFG generation started for getBalance[0m
+[36m[#] Interprocedural CFG generated for getBalance[0m
+[36m[#] Interprocedural CFG generation started for withdraw[0m
+[36m[#] Interprocedural CFG generated for withdraw[0m
+[36m[#] Interprocedural CFG generation started for deposit[0m
+[36m[#] Interprocedural CFG generated for deposit[0m
+[36m[#] SDG generation started for registerIntermediary[0m
+[36m[#] SDG generated for registerIntermediary[0m
+[36m[#] SDG generation started for constructor[0m
+[36m[#] SDG generated for constructor[0m
+[36m[#] SDG generation started for getBalance[0m
+[36m[#] SDG generated for getBalance[0m
+[36m[#] SDG generation started for withdraw[0m
+[36m[#] SDG generated for withdraw[0m
+[36m[#] SDG generation started for deposit[0m
+[36m[#] SDG generated for deposit[0m
+[36m[#] Analysis took 2.801358 seconds[0m
+[36m[#] Analysis completed: PossiblySendUserDefinedAddress.sol [0m

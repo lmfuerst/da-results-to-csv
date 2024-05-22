@@ -74,10 +74,10 @@ if __name__ == "__main__":
             with open(os.path.join(subdir, "smartbugs.json")) as f:
                 data = json.load(f)
                 fullname = data["filename"]
+                print(fullname, flush=True)
                 dictionary["filename"] = fullname
-                if "testdata" in fullname:
+                if "testdata" in fullname or "CreateBasedPossibly" in fullname:
                     split2 = fullname.split("\\")
-                    print(fullname)
                     dictionary["sol_version"] = split2[8]  # TODO adapt as needed
                     dictionary["type"] = split2[7]
                     dictionary["subtype"] = split2[10]
@@ -97,7 +97,7 @@ if __name__ == "__main__":
                     else:
                         dictionary["ground_truth"] = ""
 
-            if "testdata" in dictionary["filename"]:
+            if "testdata" in dictionary["filename"] or "CreateBasedPossibly" in dictionary["filename"]:
                 if ".sol" in dictionary["filename"]:
                     dictionary["analysis"] = "source code"
                 elif ".hex" in dictionary["filename"]:
@@ -109,7 +109,7 @@ if __name__ == "__main__":
                 print("continue")
                 continue
 
-            if "testdata" in dictionary["filename"]:
+            if "testdata" in dictionary["filename"] or "CreateBasedPossibly" in dictionary["filename"]:
                 dictionary_list.append(dictionary)
                 if ".sol" in dictionary["filename"]:
                     solidity_list.append(dictionary)

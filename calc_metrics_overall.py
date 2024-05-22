@@ -4,7 +4,7 @@ import numpy as np
 import csv
 import time
 
-basename = "results_26022024_solidity_agg"
+basename = "results_13032024_agg"
 
 if __name__ == "__main__":
     time_milli = round(time.time() * 1000)
@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # Precision = tp / (tp + fp)
     # Recall = tp / (tp + fn)
     # Specificity = tn / (tn + fn)
-    tools = ["ethor-2023", "mythril-0.23.15", "sailfish", "oyente"]
+    tools = ["ethor-2023", "mythril-0.23.15", "oyente", "sailfish"]
     print(len(df))
 
     df["error"] = np.where(df["insecure"] == "", 1, df["error"])

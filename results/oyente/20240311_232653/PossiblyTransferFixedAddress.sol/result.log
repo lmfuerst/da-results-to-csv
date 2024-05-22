@@ -1,0 +1,34 @@
+WARNING:root:You are using evm version 1.13.5. The supported version is 1.7.3
+INFO:CryticCompile:Compilation warnings/errors on /sb/PossiblyTransferFixedAddress.sol:
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> /sb/PossiblyTransferFixedAddress.sol
+
+
+incomplete push instruction at 1156
+incomplete push instruction at 46
+INFO:root:contract /sb/PossiblyTransferFixedAddress.sol:Bank:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 65.1%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/PossiblyTransferFixedAddress.sol:44:9: Warning: Integer Overflow.
+        balances[msg.sender] += msg.value
+Integer Overflow occurs if:
+    balances[msg.sender] = 1
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/PossiblyTransferFixedAddress.sol:Intermediary:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 18.4%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
