@@ -4,7 +4,7 @@ import numpy as np
 import csv
 import time
 
-basename = "results_13032024_agg"
+basename = "results_2025_agg"
 
 if __name__ == "__main__":
     time_milli = round(time.time() * 1000)
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Accuracy = (tp + tn) / (tp + tn + fn + fp)
     # Precision = tp / (tp + fp)
     # Recall = tp / (tp + fn)
-    # Specificity = tn / (tn + fn)
+    # Specificity = tn / (tn + fp)
     versions = ["v4", "v5", "v6", "v7", "v8"]
     tools = ["ethor-2023", "mythril-0.23.15", "oyente", "sailfish"]
     print(len(df))
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         accuracy_w_error = (count_tp + count_tn) / count_total
         precision = count_tp / (count_tp + count_fp)
         recall = count_tp / (count_tp + count_fn)
-        specificity = count_tn / (count_tn + count_fn)
+        specificity = count_tn / (count_tn + count_fp)
         error_rate = count_error / count_total
 
         with open(basename + "_version_metrics.csv", 'a', newline='') as csvfile:
@@ -117,7 +117,7 @@ if __name__ == "__main__":
             accuracy_w_error = (count_tp + count_tn) / count_total
             precision = count_tp / (count_tp + count_fp)
             recall = count_tp / (count_tp + count_fn)
-            specificity = count_tn / (count_tn + count_fn)
+            specificity = count_tn / (count_tn + count_fp)
             error_rate = count_error / count_total
 
             with open(basename + "_version_metrics.csv", 'a', newline='') as csvfile:
